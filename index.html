@@ -206,9 +206,7 @@ footer li a{font-size:14px;color:rgba(255,255,255,.7);transition:.3s}footer li a
   </section>
 
   <div id="product-list" class="filters">
-    <div class="seg" role="group" aria-label="Filter kitchen organizers"><span class="thumb" aria-hidden="true"></span>
-      <button data-f="all" aria-pressed="true">All (7)</button><button data-f="pantry" aria-pressed="false">Pantry &amp; Fridge</button><button data-f="cabinet" aria-pressed="false">Cabinets &amp; Drawers</button><button data-f="counter" aria-pressed="false">Counter &amp; Prep</button></div>
-    <span class="count" aria-live="polite">Showing <b id="shown">7</b> of 7</span>
+        <span class="count" aria-live="polite">Showing <b id="shown">7</b> of 7</span>
   </div>
 
   <div class="list" id="products-container">
@@ -360,6 +358,7 @@ $$('.glow').forEach(b => b.addEventListener('click', e => {
 }));
 
 // animated category filter
+if ($('.seg')) {
 const seg = $('.seg'), thumb = $('.thumb', seg), btns = $$('button', seg), cards = $$('.card'), shown = $('#shown');
 const moveThumb = b => { thumb.style.width = b.offsetWidth + 'px'; thumb.style.transform = 'translateX(' + b.offsetLeft + 'px)'; };
 function filter(cat) {
@@ -382,6 +381,7 @@ btns.forEach(b => b.addEventListener('click', () => {
 }));
 $$('footer [data-f]').forEach(a => a.addEventListener('click', () => pick(a.dataset.f)));
 const init = () => moveThumb($('[aria-pressed=true]', seg)); addEventListener('load', init); addEventListener('resize', init); init();
+}
 </script>
 </body>
 </html>
